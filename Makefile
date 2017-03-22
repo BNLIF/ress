@@ -2,6 +2,7 @@
 CC := g++
 # CC := clang --analyze # and comment out the linker last line for sanity
 SRCDIR := src
+HEADERDIR := include
 TARGET := lib/libress.so
 
 #SOURCES := $(shell find $(SRCDIR) -type f -name "*.cpp")

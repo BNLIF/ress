@@ -5,5 +5,5 @@ using namespace std;
 
 Model::Model()
 {
-    cout << "hello" << endl;
+    cout << "Model constructed" << endl;
 }

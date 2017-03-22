@@ -2,6 +2,10 @@
 
 A c++ package to implement various regression algorithms for sparse signal reconstruction.
 
+## Prerequisite
+The only depedent library is [Eigen](http://eigen.tuxfamily.org).
+Sicne `Eigen` is a header-only library, one only need to create a syumlink in `/usr/local/include` that points to the `Eigen` folder of the source code. Alternatively, one can specify `-I /path/to/eigen` in the compiler.
+
 ## Compile
 ```
 make
