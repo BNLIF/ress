@@ -4,26 +4,24 @@ A c++ package to implement various regression algorithms for sparse signal recon
 
 ## Prerequisite
 The only depedent library is [Eigen](http://eigen.tuxfamily.org).
-Sicne `Eigen` is a header-only library, one only need to create a syumlink in `/usr/local/include` that points to the `Eigen` folder of the source code. Alternatively, one can specify `-I /path/to/eigen` in the compiler.
+Sicne `Eigen` is a header-only library, one only need to create a symlink in `/usr/local/include` that points to the `Eigen` folder of the source code. Alternatively, one can specify `-I /path/to/eigen` in the compiler.
 
 ## Compile
 ```
 make
 ```
 
-## Clean up
+## Clean 
+
 ```
 make clean
 ```
 
-## Make Test
+## Test
 ```
 make test
 ```
-Then, the test program can be found in `bin/test_ress`
-
-## Run test
-
+Then, the test program can be found in `bin/test_ress`.
 The `LD_LIBRARY_PATH` need to be set for the test program to run
 ```
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(pwd)/lib
