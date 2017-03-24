@@ -19,10 +19,6 @@ void Model::SetData(Eigen::MatrixXd& X, Eigen::VectorXd& y)
     beta_ = VectorXd::Zero(X_.cols()); // initialize solution to zero.
 }
 
-void Model::Fit()
-{
-    // dummy. implementation in child classes.
-}
 
 VectorXd Model::Predict()
 {

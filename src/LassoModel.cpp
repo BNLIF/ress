@@ -41,8 +41,8 @@ void LassoModel::Fit()
         }
         VectorXd diff = beta_ - beta_last;
         if (diff.squaredNorm()<tol2) {
-            cout << "found minimum at iteration: " << i << endl;
-            cout << diff << endl;
+            // cout << "found minimum at iteration: " << i << endl;
+            // cout << diff << endl;
             break;
         }
     }

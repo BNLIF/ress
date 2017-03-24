@@ -6,14 +6,14 @@
 class Model {
 public:
     Model();
-    ~Model();
+    virtual ~Model();
 
     Eigen::VectorXd& y() { return y_; }
     Eigen::MatrixXd& X() { return X_; }
     Eigen::VectorXd& beta() { return beta_; }
 
     void SetData(Eigen::MatrixXd& X, Eigen::VectorXd& y);
-    void Fit();
+    virtual void Fit() {};
     Eigen::VectorXd Predict();
 
 protected:
