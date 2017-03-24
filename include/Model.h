@@ -16,7 +16,7 @@ public:
     void Fit();
     Eigen::VectorXd Predict();
 
-private:
+protected:
     // Fit: y = X * beta
     Eigen::VectorXd y_;
     Eigen::MatrixXd X_;

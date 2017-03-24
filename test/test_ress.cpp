@@ -8,10 +8,11 @@ using namespace std;
 
 int main()
 {
-    std::srand((unsigned int) time(0));
+    // std::srand((unsigned int) time(0));
 
-    int N_CELL = 8;
-    int N_ZERO = 3;
+    const int N_CELL = 16;
+    const int N_ZERO = 10;
+    const int N_WIRE = int(N_CELL * 0.8);
 
     // initialize C vector: NCELL cells with NZERO zeros. (true charge in each cell)
     VectorXd C = 50 * (VectorXd::Random(N_CELL)+VectorXd::Constant(N_CELL, 1));
@@ -20,9 +21,9 @@ int main()
         C( int(r(i)) ) = 0;
     }
 
-    // initialize G matrix: N_CELL-N_ZERO rows and N_CELL columns. (geometry matrix)
-    MatrixXd G = MatrixXd::Zero(N_CELL-N_ZERO, N_CELL);
-    for (int i=0; i<N_CELL-N_ZERO; i++) {
+    // initialize G matrix: N_WIRE rows and N_CELL columns. (geometry matrix)
+    MatrixXd G = MatrixXd::Zero(N_WIRE, N_CELL);
+    for (int i=0; i<N_WIRE; i++) {
         VectorXd t = VectorXd::Random(N_CELL);
         for (int j=0; j<N_CELL; j++) {
             G(i, j) = int(t(j)+1);
@@ -36,12 +37,15 @@ int main()
     // cout << G << endl << endl;
     // cout << C << endl << endl;
 
-    LassoModel m;
+    LassoModel m(0.5, 2000000);
     m.SetData(G, W);
     m.Fit();
 
     cout << "geometry matrix:" << endl;
     cout << m.X() << endl << endl;
+
+    cout << "true charge of each cell:" << endl;
+    cout << C.transpose() << endl << endl;
 
     cout << "fitted charge of each cell:" << endl;
     cout << m.beta().transpose() << endl << endl;
@@ -50,7 +54,9 @@ int main()
     cout << m.y().transpose() << endl << endl;
 
     cout << "predicted charge on each wire:" << endl;
-    cout << m.Predict().transpose() << endl;
+    cout << m.Predict().transpose() << endl << endl;
+
+    cout << "residual distance:" << sqrt((m.Predict() - m.y()).dot(m.Predict() - m.y())) << endl;
 
     return 0;
 }
