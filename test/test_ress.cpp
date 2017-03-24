@@ -15,7 +15,7 @@ int main()
     const int N_WIRE = int(N_CELL * 0.8);
 
     // initialize C vector: NCELL cells with NZERO zeros. (true charge in each cell)
-    VectorXd C = 50 * (VectorXd::Random(N_CELL)+VectorXd::Constant(N_CELL, 1));
+    VectorXd C = VectorXd::Random(N_CELL)*50 + VectorXd::Constant(N_CELL, 150);
     VectorXd r = N_CELL / 2 * (VectorXd::Random(N_ZERO)+VectorXd::Constant(N_ZERO, 1));
     for (int i=0; i<N_ZERO; i++) {
         C( int(r(i)) ) = 0;
@@ -37,7 +37,8 @@ int main()
     // cout << G << endl << endl;
     // cout << C << endl << endl;
 
-    LassoModel m(0.5, 2000000);
+    LassoModel m(0.5, 100000, 1e-4);
+    // LassoModel m(0.5, int(1000));
     m.SetData(G, W);
     m.Fit();
 

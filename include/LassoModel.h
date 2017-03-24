@@ -6,11 +6,13 @@
 
 class LassoModel: public Model {
 public:
-    LassoModel(double lambda=1., int max_iter=100000);
+    LassoModel(double lambda=1., int max_iter=100000, double TOL=1e-3, bool non_negtive=true);
     ~LassoModel();
 
     double lambda; // regularization parameter
     int max_iter; // maximum iteration
+    double TOL;
+    bool non_negtive;
 
     void Fit();
 
