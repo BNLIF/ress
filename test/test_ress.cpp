@@ -10,7 +10,7 @@ int main()
 {
     // std::srand((unsigned int) time(0));
 
-    const int N_CELL = 16;
+    const int N_CELL = 20;
     const int N_ZERO = 10;
     const int N_WIRE = int(N_CELL * 0.8);
 

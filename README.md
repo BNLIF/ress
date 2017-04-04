@@ -11,6 +11,12 @@ Sicne `Eigen` is a header-only library, one only need to create a symlink in `/u
 make
 ```
 
+## Install
+
+```
+make install PREFIX='/path/to/install'
+```
+
 ## Clean 
 
 ```

@@ -18,10 +18,15 @@ INC := -Iinclude
 all: ${TARGET}
 
 $(TARGET): $(OBJECTS)
+	mkdir -p lib
 	$(CC) $(CFLAGS) $(OBJECTS) -o $@ ${LDFLAGS}
 
 %.o: %.cpp
 	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
+
+install:
+	mkdir -p $(PREFIX)/lib
+	cp lib/libress.so $(PREFIX)/lib/
 
 clean:
 	@echo "Cleaning...";
